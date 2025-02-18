@@ -33,5 +33,3 @@ class WishlistView(APIView):
         wish=model.objects.get(id=id)
         wish.delete()
         return JsonResponse({'message':'wish deleted'})
-    
-         

@@ -7,6 +7,10 @@ from django.http import JsonResponse
 
 # Create your views here.
 
+# #create a new fruit
+# new_fruit=Fruit(name='Banana', color='Yellow', weight=200, price=10) 
+# new_fruit.clean() #validate the data
+# new_fruit.save()   
 
 def index(request):
     # return HttpResponse("Hello, world. You're at the fruits index.")

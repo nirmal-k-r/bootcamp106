@@ -39,7 +39,7 @@ class LoginView(APIView): #login
             # login(request,user)
             token,created=Token.objects.get_or_create(user=user)
 
-            return JsonResponse({'message':'Login successful','token':token.key})
+            return JsonResponse({'message':'Login successful', 'user': {'username':user.username, 'token':token.key}})
         else:
             return JsonResponse({'message':'Login failed'})
 
