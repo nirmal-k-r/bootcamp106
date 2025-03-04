@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+</head>
+    <body>
+        <h1>Guessing Game</h1>
+
+        <button onclick="playTheGame()">Play the game</button>
+        
+    </body>
+
+
+    <script>
+        function playTheGame(){
+            confirmation=confirm("Do you want to play the game: ")
+            if (confirmation==true){
+                game();
+            }else{
+                alert("No problem, Goodbye!");
+            }
+        }
+        
+
+        function game(){
+            // alert('You are now playing the game!');
+            generatedNumber=Math.floor(Math.random()*10);
+
+            for (i=0;i<=3;i++){
+                if (i==3){
+                    alert("Out of chances");
+                    break;
+                }
+                guessed=prompt("Enter a number");
+                guessedNum=parseInt(guessed);
+                if (isNaN(guessedNum)){
+                    alert("Sorry Not a number, Goodbye");
+                    break;
+                }else{
+                    if (guessedNum==generatedNumber){
+                        alert("Winner");
+                        break;
+                    }else if (guessedNum<generatedNumber){
+                        alert("Your number is smaller then the computer’s, guess again");
+                    }else{
+                        alert("Your number is bigger then the computer’s, guess again”");
+                    }
+                }   
+            }
+        }
+
+    </script>
+
+</html>
