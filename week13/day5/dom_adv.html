@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <section>
+            <h1 id="title" abcd="Dog">Fruits</h1>
+
+            <label>Fruit</label>
+            <input type="text" id="fruit" />
+
+            <button id="addFruit">Add</button>
+            <button id="removeFruit">Remove</button>
+
+            <hr>
+            <ul id="fruitList">
+                
+            </ul>
+            
+        </section>
+        
+    </body>
+
+    <script>
+        addFruitButton=document.getElementById('addFruit');
+        addFruitButton.addEventListener('click',addFruit);
+
+        removeFruitButton=document.getElementById('removeFruit');
+        removeFruitButton.addEventListener('click',removeFruit);
+
+        list=document.querySelector('#fruitList');
+
+        function addFruit(){
+            enteredFruit=document.getElementById('fruit').value;
+            newElement=document.createElement('li');
+            newElement.innerHTML=enteredFruit;
+            newElement.id=enteredFruit;
+            list.appendChild(newElement);
+        }
+
+        function removeFruit(){
+            enteredFruit=document.getElementById('fruit').value;
+            elementToDelete=document.getElementById(enteredFruit);
+            list.removeChild(elementToDelete);
+        }
+
+        h1=document.getElementById('title');
+        console.log(h1.getAttribute('abcd'));
+
+        h1.setAttribute('abcd','Cat');
+    </script>
+</html>

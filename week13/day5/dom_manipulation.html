@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+
+            body{
+                background-color: gray;
+                color: black;
+            }
+            .greenButton{
+                background-color: green;
+            }
+
+            .yellowBorder{
+                border: 5px solid yellow;
+            }
+
+            .darkMode{
+                background-color: black;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section>
+            <button onclick="toggle()">DarkMode</button>
+            <h1 id="title">Cats</h1>
+            <p id="catPara">Cats are furry</p>
+
+        </section>
+        
+
+        <section>
+            
+            <h3 class='abcd' id="test">Test</h3>
+
+            <input type="text" id="myInput" />
+            <button id="myButton">Test</button>
+        </section>
+    </body>
+
+
+    <script>
+        title=document.getElementById("title");
+        console.log(title);
+
+        data=title.innerHTML;
+        console.log(data);
+
+        document.getElementById("title").innerHTML="Crocodiles";
+
+        
+        catPara=document.querySelector('#catPara').innerHTML;
+        console.log(catPara);
+
+
+        test=document.getElementsByClassName('abcd');
+        console.log(test[0].innerHTML);
+
+        button=document.getElementById('myButton');
+        button.innerHTML='New button';
+
+        // button2=document.querySelector('#myButton');
+        // button2.innerHTML='New button 2';
+
+        function read(){
+            input=document.getElementById('myInput');
+            alert(input.value);
+        }
+
+        button.addEventListener('click',read); //bind Event LIstener
+
+        
+        // body=document.body;
+        // body.style.backgroundColor="Gray";
+
+        button.className="greenButton";
+        button.classList.add('yellowBorder');
+        button.classList.remove('greenButton');
+
+        function toggle(){
+            body=document.body;
+            body.classList.toggle('darkMode');
+        }
+
+    </script>
+</html>

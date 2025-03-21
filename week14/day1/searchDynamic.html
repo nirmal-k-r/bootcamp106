@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>Search</h1>
+        <label>Search</label>
+        <input type="text" id="search"  />
+
+        <ol id="searchResults">
+
+        </ol>
+        
+    </body>
+
+    <script>
+        articles=['apple','pine apple','pine','banana','orange','grapes','mango','kiwi','strawberry','blueberry','raspberry','blackberry'];
+
+
+        searchField=document.getElementById('search');
+        searchField.addEventListener('keydown',search);
+
+        searchResults=document.getElementById('searchResults');
+        function search(){
+            searchResults.innerHTML='';
+
+            searchValue=document.getElementById('search').value;
+            // alert(`Searching for ${searchValue}`);
+            
+            var found=false;
+            for (article of articles){
+                if (article.includes(searchValue)){
+                    // alert(`${article} found`);
+                    newElement=document.createElement('li');
+                    newElement.innerHTML=article;
+                    searchResults.appendChild(newElement);
+                    found=true;
+                }
+            }
+
+            // if (found==false){
+            //     alert('Not found');
+            // }
+
+            
+        }
+
+    </script>
+</html>

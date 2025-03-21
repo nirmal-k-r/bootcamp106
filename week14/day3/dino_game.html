@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino game</title>
+
+    <style>
+        .canvas{
+            width:1000px;
+            height:300px;
+            background-color:rgb(209, 209, 209);
+            position:absolute;
+        }   
+
+        .dino{
+            width: 75px;
+            position: relative;
+        }
+
+        .cactus{
+            width:75px;
+            position: relative;
+        }
+    </style>
+</head>
+    <body>
+        <h1>Dino game</h1>
+
+        <br><br>
+
+        <div class="canvas">
+           
+        </div>
+
+        <button onclick="jump()">Jump</button>
+        
+    </body>
+    
+    <script>
+        canvas=document.querySelector('.canvas');
+        danger_items_x=[];
+        danger_items_y=[];
+        var x=5;
+        var y=220;
+        var speedFactor=1;
+
+        var status="ready";
+
+        function spawn(){
+            dino=document.createElement('img');
+            dino.classList.add('dino');
+            canvas.appendChild(dino);
+            dino.src="sprite.png";
+            dino.style.left=x+"px";
+            dino.style.top=y+"px";
+        }
+
+        function getRandomIntInclusive(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+        }
+        function spawn_cactus(){
+            pos_x=getRandomIntInclusive(200,500);
+            pos_y=220;
+
+            cactus=document.createElement('img');
+            canvas.appendChild(cactus);
+            cactus.style.left=pos_x+"px";
+            cactus.style.top=pos_y+"px";
+            cactus.classList.add("cactus");
+            cactus.src="cactus.png";
+            danger_items_x.push(pos_x);
+            danger_items_y.push(pos_y);
+        }
+
+        document.addEventListener('keydown',checkJump);
+
+        function checkJump(event){
+            if (event.key==" "){
+                jump();
+            }
+        }
+
+        function move(){
+            if (status=="lost"){
+                dino.style.display="None";
+            }
+
+            x=x+100; //mobe right
+
+            if (y>=0){
+                new_y=y+25; //fall down
+                if (new_y>=220){
+                    y=220;
+                }else{
+                    y=new_y;
+                }
+            }
+
+            dino.style.left=x+"px";
+            dino.style.top=y+"px";
+
+            check_collision();
+        }
+
+        function check_collision(){
+            for (i=0; i<danger_items_x.length; i++){
+                if (x>=danger_items_x[i] && x<=danger_items_x[i]+75){
+                    if (danger_items_y[i] && x<=danger_items_x[i]+75){
+                        alert('You lose');
+                        status="lost";
+                    }
+                }
+            }
+        }
+
+        function jump(){
+            if (status=="ready"){
+                status="running";
+                spawn();
+                spawn_cactus();
+                setInterval(move,(100*speedFactor));
+
+            }else if(status=="running"){
+                status="jumping";
+                jumpUp();
+            }
+        }
+
+
+        function jumpUp(){
+            upAmount=150;
+            move_units=25;
+            num_times=upAmount/move_units;
+
+            jumpUpAnimate(num_times);
+            
+        }
+
+        function jumpUpAnimate(remaining){
+            setTimeout(function (){
+                // y=y-25; //jump up
+                new_y=y-25; //fall down
+                if (new_y<5){
+                    y=5;
+                }else{
+                    y=new_y;
+                }
+                dino.style.top=y+"px";
+                if (remaining>0){
+                    jumpUpAnimate(remaining-1);
+                }else{
+                    status="running";
+                }
+            },(speedFactor/5));
+        }
+
+        
+
+    </script>
+
+</html>

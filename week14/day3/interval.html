@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+
+        <h2>Interval</h2>
+
+        <p id="value">0</p>
+
+        <button id="start">Start</button>
+
+        <button id="stop">Stop</button>
+
+        <button onclick="reset()">Reset</button>
+    </body>
+
+    <script>
+        value=document.querySelector("#value");
+        value.innerHTML=0;
+        startButton=document.querySelector("#start");
+        stopButton=document.querySelector("#stop");
+
+        startButton.addEventListener('click',startInterval);
+        stopButton.addEventListener('click',stopInterval);
+
+        function startInterval(){
+            interval=setInterval(increment,1000); //run increment function every 1000ms
+        }
+
+        function stopInterval(){
+            clearInterval(interval);
+        }
+
+        function increment(){
+           value.innerHTML=parseInt(value.innerHTML)+1;
+        }
+
+        function reset(){
+            value.innerHTML=0;
+        }   
+
+
+
+
+    </script>
+</html>

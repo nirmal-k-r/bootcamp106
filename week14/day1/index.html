@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <meta name="description" content="This is a login form">
+
+        <!-- meta og tags -->
+        <meta property="og:title" content="Login Form">
+        <meta property="og:description" content="This is a login form">
+        <meta property="og:image" content="https://via.placeholder.com/150">
+    </head>
+
+    <body onload="websiteLoad()">
+        <h1 id="Title">Login Form</h1>
+
+        <img src="..." alt="image of penguin"/>
+
+        <form id="loginForm">
+            <label>Username</label>
+            <input type="text" id="username" />
+
+            <label>Password</label>
+            <input type="password" id="password" />
+
+            <input type="submit" value="Login" />
+
+        </form>
+
+        <button id="resetBtn">Reset</button>
+        
+    </body>
+
+    <script>
+
+        form =document.getElementById('loginForm');
+
+        form.addEventListener('submit',login);
+
+        function login(event){
+            event.preventDefault();
+            
+            username=document.getElementById('username').value; 
+            password=document.getElementById('password').value;
+
+            if (password.length<5){
+                alert('Password must be at least 5 characters long');
+            }else{
+                if (username=='admin' && password=='admin1234'){
+                    alert(`Welcome ${username}`);
+                }else{
+                    alert('Login Failed');
+                }   
+            }
+        }
+
+        resetButton=document.getElementById('resetBtn');
+        resetButton.addEventListener('click',reset);
+
+        resetButton.addEventListener('mouseover',function(){
+            resetButton.style.backgroundColor='blue';
+        });
+
+        resetButton.addEventListener('mouseout',function(){
+            resetButton.style.backgroundColor='white';
+        });
+
+
+        function reset(){
+           username=document.getElementById('username').value;
+           console.log(username);
+        
+           if (username!=""){
+                newPassword=prompt('Enter a new password');
+                alert(`Username: ${username} Password: ${newPassword}`);
+           }else{
+                alert('Enter a username');
+           }
+        }
+
+        function websiteLoad(){
+            alert('Website Loaded');
+        }
+    </script>
+</html>

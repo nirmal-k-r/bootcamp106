@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini game</title>
+    
+    <style>
+        .canvas{
+            width:500px;
+            height:500px;
+            background-color: yellow;
+            position:absolute;
+        }
+
+        .sprite{
+            background-color: red;
+            width:50px;
+            height:50px;
+            position: relative;
+        }
+    </style>
+</head>
+    <body>  
+        <h1>Mini game</h1>
+        <button onclick="run()">Click me</button>
+        <br><br>
+        <div class="canvas">
+            
+        </div>
+        
+    </body>
+
+    <script>
+        canvas=document.querySelector('.canvas');
+        sprite=document.createElement('div');
+        sprite.classList.add('sprite');
+
+        var x=0;
+        var y=0;
+        
+        function run(){
+            canvas.innerHTML='';
+            canvas.appendChild(sprite);
+            sprite.style.left="0px";
+            sprite.style.top="0px";
+            interval=setInterval(move,1000);
+            x=0;
+            y=0;
+        }
+
+        function move(){
+
+            if(x>=450 || y>=450){
+                clearInterval(interval);
+            }else{
+                x=x+50;
+                y=y+50;
+
+                sprite.style.left=x+"px"; //move right by 50px
+                sprite.style.top=y+"px"; //move down by 50px
+                console.log('moving');
+            } 
+        }
+    </script>
+</html>

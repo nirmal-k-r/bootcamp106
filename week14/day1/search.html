@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>Search</h1>
+        <label>Search</label>
+        <input type="text" id="search" />
+        <button id="searchBtn">Search</button>
+        
+    </body>
+
+    <script>
+        articles=['apple','banana','orange','grapes','mango','kiwi','strawberry','blueberry','raspberry','blackberry'];
+        searchButton=document.getElementById('searchBtn');
+        searchButton.addEventListener('click',search);
+
+        function search(){
+            searchValue=document.getElementById('search').value;
+            alert(`Searching for ${searchValue}`);
+            
+            var found=false;
+            for (article of articles){
+                if (article.includes(searchValue)){
+                    alert(`${article} found`);
+                    found=true
+                }
+            }
+
+            if (found=false){
+                alert('Not found');
+            }
+
+            
+        }
+
+    </script>
+</html>

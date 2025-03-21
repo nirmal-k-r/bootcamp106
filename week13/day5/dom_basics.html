@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <section>
+            <h1>Cats</h1>
+            <p>Cats are furry</p>
+
+        </section>
+        
+
+        <section>
+            <button>Test</button>
+            <h3>Test</h3>
+        </section>
+    </body>
+
+
+    <script>
+        console.log(document); //root element
+
+        html=document.firstElementChild;
+        console.log(html);
+
+        head=html.children[0];
+        console.log(head);
+
+        // body=html.children[1];
+        // console.log(body);
+        body=head.nextElementSibling;
+        console.log(body);
+
+
+        secondSection=body.children[1];
+        button=secondSection.firstElementChild;
+        console.log(button);
+
+    </script>
+</html>
