@@ -1,13 +1,19 @@
 //import my libaries
 var express = require('express');
 var ejs = require('ejs');
-
+var bodyParser = require('body-parser');
 
 //import routers
 productRouter=require('./routes/product');
+adminRouter=require('./routes/admin');
+
+//connect database
+db=require('./db');
 
 //create server
 var server=express(); 
+server.use(bodyParser.urlencoded({extended:true}));
+server.use(bodyParser.json());
 
 //set view engine
 server.set('view engine','ejs');
@@ -20,21 +26,9 @@ server.set('views','./templates');
 server.use(express.static('./static'));
 
 
-
-//basic route handling
-
-
 //connect routers
 server.use('/',productRouter);
-
-
-// server.get('/', async function(req,res){
-//     res.send('Youre on the homepage');
-// });
-
-// server.get('/about', async function(req,res){
-//     res.send('Youre on the about page');
-// });
+server.use('/admin',adminRouter);
 
 
 //start server and listen to port
